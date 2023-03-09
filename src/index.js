@@ -1,3 +1,33 @@
+function formatDate(timestamp) {
+  let now = new Date(timestamp);
+  let hours = now.getHours();
+  if (hours < 10) {
+    hours = `0${hours}`;
+  }
+  let minutes = now.getMinutes();
+  if (minutes < 10) {
+    minutes = `0${minutes}`;
+  }
+  let weekdays = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let weekday = weekdays[now.getDay()];
+  return `${weekday} ${hours}:${minutes}`;
+}
+
+function formatDay(timestamp) {
+  let date = new Date(timestamp * 1000);
+  let day = date.getDay();
+  let days = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
+  return days[day];
+}
+
 function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -25,13 +55,17 @@ function displayWeatherCondition(response) {
   document.querySelector("#wind-speed").innerHTML = `${wind} km/h`;
   let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
+  let dayElement = document.querySelector("#day");
+  dayElement.innerHTML = formatDate(response.data.dt * 1000);
+
+  // getForecast(response.data.coord);
 }
 
 function changeCity(event) {
   event.preventDefault();
-  let citygiven = document.querySelector("#city");
+  let citygivenElement = document.querySelector("#city");
   let city = document.querySelector("#city-input").value;
-  citygiven.innerHTML = city.value;
+  citygivenElement.innerHTML = city.value;
   searchCity(city);
 }
 
@@ -39,27 +73,6 @@ let buttonCurrent = document.querySelector(".button-current");
 buttonCurrent.addEventListener("click", getLocation);
 
 let searchf = document.querySelector(".button-search");
-searchf.addEventListener("click", changeCity);
+searchf.addEventListener("submit", changeCity);
 
-let now = new Date();
-let day = document.querySelector("#day");
-let weekdays = [
-  "Sunday",
-  "Monday",
-  "Tuesday",
-  "Wednesday",
-  "Thursday",
-  "Friday",
-  "Saturday",
-];
-let weekday = weekdays[now.getDay()];
-let minutes = now.getMinutes();
-if (minutes < 10) {
-  minutes = `0${minutes}`;
-}
-let hours = now.getHours();
-if (hours < 10) {
-  hours = `0${hours}`;
-}
-day.innerHTML = `${weekday} ${hours}:${minutes}`;
 searchCity("London");
