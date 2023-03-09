@@ -141,7 +141,9 @@ a {
   color: #132743;
   cursor: pointer;
 }
-
+#description {
+  text-transform: lowercase;
+}
 #description::first-letter {
   text-transform: capitalize;
 }
