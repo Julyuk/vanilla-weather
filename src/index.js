@@ -34,17 +34,15 @@ function goFarenheit(event) {
   celsiuslink.classList.remove("active");
   fahrenheitlink.classList.add("active");
   let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = Math.round(fahrenheiTemperature);
+  temperatureElement.innerHTML = `${Math.round(fahrenheiTemperature)} °F`;
 }
 function goCelsius(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = `${Math.round(celsiusTemperature)} °C`;
 }
-
-let celsiusTemperature = null;
 
 function showPosition(position) {
   let latitude = position.coords.latitude;
@@ -134,7 +132,7 @@ function changeCity(event) {
   citygivenElement.innerHTML = city.value;
   searchCity(city);
 }
-
+let celsiusTemperature = null;
 let farenheitlink = document.querySelector("#f");
 farenheitlink.addEventListener("click", goFarenheit);
 
