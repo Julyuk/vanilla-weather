@@ -27,9 +27,9 @@ function displayWeatherCondition(response) {
 
 function changeCity(event) {
   event.preventDefault();
-  let citygiven = document.querySelector("#city");
+  let citygivenElement = document.querySelector("#city");
   let city = document.querySelector("#city-input").value;
-  citygiven.innerHTML = city.value;
+  citygivenElement.innerHTML = city.value;
   searchCity(city);
 }
 
