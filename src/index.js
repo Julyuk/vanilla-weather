@@ -30,7 +30,7 @@ function changeCity(event) {
   let citygivenElement = document.querySelector("#city");
   let city = document.querySelector("#city-input").value;
   citygivenElement.innerHTML = city.value;
-  let descriptionElement = document.querySelector(".description");
+  let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
   searchCity(city);
 }

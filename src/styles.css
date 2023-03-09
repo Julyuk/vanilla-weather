@@ -141,3 +141,6 @@ a {
   color: #132743;
   cursor: pointer;
 }
+#description {
+  text-transform: capitalize;
+}
