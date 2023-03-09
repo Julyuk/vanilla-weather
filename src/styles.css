@@ -52,7 +52,11 @@ p {
   border-color: #132743;
   color: #132743;
 }
-
+#link-below {
+  text-align: center;
+  padding-bottom: 20px;
+  font-size: 12px;
+}
 .weather-icon {
   font-size: 36px;
   text-align: center;
