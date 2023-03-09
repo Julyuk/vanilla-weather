@@ -33,15 +33,16 @@ function goFarenheit(event) {
   let temperatureElement = document.querySelector("#temp");
   celsiuslink.classList.remove("active");
   fahrenheitlink.classList.add("active");
-  let fahrenheiTemperature = (celsiusTemperature * 9) / 5 + 32;
-  temperatureElement.innerHTML = `${Math.round(fahrenheiTemperature)} °F`;
+  let fahrenheiTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
+  temperatureElement.innerHTML = `${fahrenheiTemperature} °F`;
 }
 function goCelsius(event) {
   event.preventDefault();
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temp");
-  temperatureElement.innerHTML = `${Math.round(celsiusTemperature)} °C`;
+  celsiusTemperature = Math.round(celsiusTemperature);
+  temperatureElement.innerHTML = `${celsiusTemperature} °C`;
 }
 
 function showPosition(position) {
