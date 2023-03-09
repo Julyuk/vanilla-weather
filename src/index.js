@@ -1,8 +1,10 @@
-let latitude = position.coords.latitude;
-let longitude = position.coords.longitude;
-let key = "215576bab28022db35e6e64f040e1b56";
-let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${key}`;
-axios.get(url).then(displayWeatherCondition);
+function showPosition(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let key = "215576bab28022db35e6e64f040e1b56";
+  let url = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&units=metric&appid=${key}`;
+  axios.get(url).then(displayWeatherCondition);
+}
 
 function getLocation(event) {
   event.preventDefault();
@@ -21,9 +23,8 @@ function displayWeatherCondition(response) {
   document.querySelector("#humidity").innerHTML = `${hum}%`;
   let wind = Math.round(response.data.wind.speed);
   document.querySelector("#wind-speed").innerHTML = `${wind} km/h`;
-   let descriptionElement = document.querySelector("#description");
+  let descriptionElement = document.querySelector("#description");
   descriptionElement.innerHTML = response.data.weather[0].description;
-function showPosition(position) {
 }
 
 function changeCity(event) {
@@ -62,4 +63,3 @@ if (hours < 10) {
 }
 day.innerHTML = `${weekday} ${hours}:${minutes}`;
 searchCity("London");
-
