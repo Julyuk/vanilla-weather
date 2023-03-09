@@ -23,6 +23,8 @@ function displayWeatherCondition(response) {
   document.querySelector("#humidity").innerHTML = `${hum}%`;
   let wind = Math.round(response.data.wind.speed);
   document.querySelector("#wind-speed").innerHTML = `${wind} km/h`;
+  let descriptionElement = document.querySelector("#description");
+  descriptionElement.innerHTML = response.data.weather[0].description;
 }
 
 function changeCity(event) {
@@ -30,8 +32,6 @@ function changeCity(event) {
   let citygivenElement = document.querySelector("#city");
   let city = document.querySelector("#city-input").value;
   citygivenElement.innerHTML = city.value;
-  let descriptionElement = document.querySelector("#description");
-  descriptionElement.innerHTML = response.data.weather[0].description;
   searchCity(city);
 }
 
