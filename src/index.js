@@ -30,6 +30,8 @@ function formatDay(timestamp) {
 
 function goFarenheit(event) {
   event.preventDefault();
+  let fahrenheitlink = document.querySelector("#f");
+  let celsiuslink = document.querySelector("#c");
   let temperatureElement = document.querySelector("#temp");
   celsiuslink.classList.remove("active");
   fahrenheitlink.classList.add("active");
@@ -38,6 +40,8 @@ function goFarenheit(event) {
 }
 function goCelsius(event) {
   event.preventDefault();
+  let fahrenheitLink = document.querySelector("#f");
+  let celsiusLink = document.querySelector("#c");
   celsiusLink.classList.add("active");
   fahrenheitLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temp");
