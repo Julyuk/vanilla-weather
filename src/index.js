@@ -28,27 +28,6 @@ function formatDay(timestamp) {
   return days[day];
 }
 
-function goFarenheit(event) {
-  event.preventDefault();
-  let fahrenheitlink = document.querySelector("#f");
-  let celsiuslink = document.querySelector("#c");
-  let temperatureElement = document.querySelector("#temp");
-  celsiuslink.classList.remove("active");
-  fahrenheitlink.classList.add("active");
-  let fahrenheiTemperature = Math.round((celsiusTemperature * 9) / 5 + 32);
-  temperatureElement.innerHTML = `${fahrenheiTemperature} °F`;
-}
-function goCelsius(event) {
-  event.preventDefault();
-  let fahrenheitLink = document.querySelector("#f");
-  let celsiusLink = document.querySelector("#c");
-  celsiusLink.classList.add("active");
-  fahrenheitLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temp");
-  celsiusTemperature = Math.round(celsiusTemperature);
-  temperatureElement.innerHTML = `${celsiusTemperature} °C`;
-}
-
 function showPosition(position) {
   let latitude = position.coords.latitude;
   let longitude = position.coords.longitude;
@@ -137,12 +116,6 @@ function changeCity(event) {
   citygivenElement.innerHTML = city.value;
   searchCity(city);
 }
-let celsiusTemperature = null;
-let farenheitlink = document.querySelector("#f");
-farenheitlink.addEventListener("click", goFarenheit);
-
-let celsiuslink = document.querySelector("#c");
-celsiuslink.addEventListener("click", goCelsius);
 
 let buttonCurrent = document.querySelector(".button-current");
 buttonCurrent.addEventListener("click", getLocation);
