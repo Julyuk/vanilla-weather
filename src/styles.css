@@ -154,3 +154,7 @@ a {
 img {
   color: #132743;
 }
+
+.min-temp {
+  opacity: 0.6;
+}
