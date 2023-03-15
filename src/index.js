@@ -71,17 +71,26 @@ function displayForecast(response) {
   let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
-  let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (forecastDay, index) {
+  forecast.forEach(function (forecastDay, index) {
     if (index < 6) {
       forecastHTML =
         forecastHTML +
         `  
         <div class="col">
-          <p>${forecastDay.dt}</p>
-          <img src="http://openweathermap.org/img/wn${forecast.weather[0].icon}@2x.png" alt="" width="42"/>
+          <p>${formatDay(forecastDay.dt)}</p>
+        <img
+          src="http://openweathermap.org/img/wn/${
+            forecastDay.weather[0].icon
+          }@2x.png"
+          alt=""
+          width="42"
+        />
           <p>
-            <span class="max-temp">{forecastDay.temp.max}° </span><span class="min-temp">{forecastDay.temp.min}°</span>
+            <span class="max-temp">${Math.round(
+              forecastDay.temp.max
+            )}° </span><span class="min-temp">${Math.round(
+          forecastDay.temp.min
+        )}°</span>
           </p>
         </div>`;
     }
@@ -93,7 +102,7 @@ function displayForecast(response) {
 function getForecast(coordinates) {
   console.log(coordinates);
   let apikey = "ac209dae1f283fb332a5bb7f50b0f468";
-  let apiurl = `https://api.openweathermap.org/data/2.5/onecall?lat={lat}&lon={lon}&exclude={part}&appid=${apikey}`;
+  let apiurl = `https://api.openweathermap.org/data/2.5/onecall?lat=${coordinates.lat}&lon=${coordinates.lon}&appid=${apikey}&units=metric`;
   axios.get(apiurl).then(displayForecast);
 }
 
@@ -142,4 +151,3 @@ let searchf = document.querySelector(".button-search");
 searchf.addEventListener("click", changeCity);
 
 searchCity("Washington");
-displayForecast();
