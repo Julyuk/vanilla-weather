@@ -68,21 +68,25 @@ function searchCity(city) {
 }
 
 function displayForecast(response) {
+  let forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class="row">`;
   let days = ["Thu", "Fri", "Sat", "Sun", "Mon"];
-  days.forEach(function (day) {
-    forecastHTML =
-      forecastHTML +
-      `  
+  days.forEach(function (forecastDay, index) {
+    if (index < 6) {
+      forecastHTML =
+        forecastHTML +
+        `  
         <div class="col">
-          <p>wed</p>
-          <i class="fa-solid fa-cloud-sun weather-icon"></i>
+          <p>${forecastDay.dt}</p>
+          <img src="http://openweathermap.org/img/wn${forecast.weather[0].icon}@2x.png" alt="" width="42"/>
           <p>
-            <span class="max-temp">9° </span><span class="min-temp">8°</span>
+            <span class="max-temp">{forecastDay.temp.max}° </span><span class="min-temp">{forecastDay.temp.min}°</span>
           </p>
         </div>`;
+    }
   });
+  forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
 }
 
